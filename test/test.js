@@ -62,5 +62,41 @@ describe('FixedSizeLifo', function () {
                assert.strictEqual(s.peekBottom(), undefined);
                assert.deepEqual(overflowValues, [3,4]);                              
            });
-    });    
+    });
+    describe('clone', function () {
+        it('should work'
+           , function () {
+               const MAX = 2;
+               const overflowValues = [];
+               const overflow = (x) => {overflowValues.push(x);};
+               let s : FixedSizeLifo = new FixedSizeLifo(MAX, overflow);
+               s.push(3);
+               assert.strictEqual(s.peek(), 3);
+               assert.strictEqual(s.peekBottom(), 3);
+               assert.deepEqual(overflowValues, []);
+               s.push(4);
+               assert.strictEqual(s.peek(), 4);
+               assert.strictEqual(s.peekBottom(), 3);
+               assert.deepEqual(overflowValues, []);               
+               s.push(5);
+               assert.strictEqual(s.peek(), 5);
+               assert.strictEqual(s.peekBottom(), 4);
+               assert.deepEqual(overflowValues, [3]);
+               s.push(6);
+               assert.strictEqual(s.peek(), 6);
+               assert.strictEqual(s.peekBottom(), 5);
+               assert.deepEqual(overflowValues, [3,4]);
+               const s2 = s.clone();
+               assert.strictEqual(s2.peek(), 6);
+               assert.strictEqual(s2.peekBottom(), 5);
+               assert.deepEqual(overflowValues, [3,4]);
+               s2.push(7);
+               assert.strictEqual(s.peek(), 6);
+               assert.strictEqual(s.peekBottom(), 5);
+               assert.deepEqual(overflowValues, [3,4]);
+               assert.strictEqual(s2.peek(), 7);
+               assert.strictEqual(s2.peekBottom(), 6);
+               assert.deepEqual(overflowValues, [3,4]);
+           });
+    });
 });

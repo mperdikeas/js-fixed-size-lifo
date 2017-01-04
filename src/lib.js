@@ -42,6 +42,13 @@ FixedSizeLifo.prototype.push = function (vs) { // one or many values
     }
 };
 
+FixedSizeLifo.prototype.clone = function(f: OverflowFunction = ()=>{}): FixedSizeLifo {
+    const rv = new FixedSizeLifo(this.max, f); // you need to provide a new overflow function, can't use the existing one
+    rv.overflownN = this.overflownN;
+    rv.arr = this.arr;
+    return rv;
+};
+
 FixedSizeLifo.prototype.size = function(): number {
     return this.arr.length;
 };
