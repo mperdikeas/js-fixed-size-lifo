@@ -1,5 +1,4 @@
 // @flow
-require('source-map-support').install();
 
 'use strict';
 
@@ -61,17 +60,21 @@ FixedSizeLifo.prototype.numOverflown = function(): number {
     return this.overflownN;
 };
 
-FixedSizeLifo.prototype.peek = function(): number {
+FixedSizeLifo.prototype.peek = function(): any {
     return this.arr[this.arr.length-1];
 };
 
-FixedSizeLifo.prototype.peekBottom = function(): number {
+FixedSizeLifo.prototype.peekBottom = function(): any {
     return this.arr[0];
 };
 
 
-FixedSizeLifo.prototype.pop = function(): number {
+FixedSizeLifo.prototype.pop = function(): any {
     return this.arr.pop();
+};
+
+FixedSizeLifo.prototype.at = function(i: number): any {
+    return this.arr[i];
 };
 
 
