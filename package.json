@@ -1,6 +1,6 @@
 {
   "name": "fixed-size-lifo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -57,14 +57,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/username/replaceme.git"
+    "url": "git+https://github.com/mperdikeas/js-fixed-size-lifo.git"
   },
   "bugs": {
-    "url": "https://github.com/username/replaceme/issues"
+    "url": "https://github.com/mperdikeas/js-fixed-size-lifo/issues"
   },
-  "homepage": "https://github.com/username/replaceme#readme",
+  "homepage": "https://github.com/mperdikeas/js-fixed-size-lifo#readme",
   "keywords": [
-      "shogi", "AI", "boardgames"
+      "LIFO", "queue", "fixed size"
   ],
   "author": "",
   "license": "ISC",
