@@ -15,6 +15,7 @@ describe('FixedSizeLifo', function () {
                assert.strictEqual(s.size(), 0);
                assert.strictEqual(s.remainingCapacity(), MAX);
                assert.strictEqual(s.numOverflown(), 0);
+
                for (let i = 0 ; i < MAX ; i++) {
                    s.push(i);
                    assert.strictEqual(s.size(), i+1);
@@ -27,7 +28,6 @@ describe('FixedSizeLifo', function () {
                    assert.strictEqual(s.remainingCapacity(), 0);
                    assert.strictEqual(s.numOverflown(), i+1);
                }
-
            });
     });
     describe('peek, pop', function () {

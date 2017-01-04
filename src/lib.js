@@ -31,12 +31,15 @@ function FixedSizeLifo(max: number, f : OverflowFunction = ()=>{}) {
     this.f = f;
 }
 
-FixedSizeLifo.prototype.push = function (v) {
-    if (this.arr.length===this.max) {
-        this.f(this.arr.splice(0,1)[0]);
-        this.overflownN++;
+FixedSizeLifo.prototype.push = function (vs) { // one or many values
+    this.arr = this.arr.concat(vs);
+    if (this.arr.length > this.max) {
+        const overflown: Array<any> = this.arr.splice(0, this.arr.length - this.max);
+        overflown.forEach( (x)=> {
+            this.f(x);
+            this.overflownN++;            
+        } );
     }
-    this.arr.push(v);
 };
 
 FixedSizeLifo.prototype.size = function(): number {
