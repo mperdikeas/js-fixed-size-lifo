@@ -60,14 +60,23 @@ FixedSizeLifo.prototype.numOverflown = function(): number {
     return this.overflownN;
 };
 
-FixedSizeLifo.prototype.peek = function(): any {
-    return this.arr[this.arr.length-1];
+FixedSizeLifo.prototype.peek = function(furtherBack: number = 0): any {
+    assert.isTrue(Number.isInteger(furtherBack));
+    return this.arr[this.arr.length-1-furtherBack];
 };
 
-FixedSizeLifo.prototype.peekBottom = function(): any {
-    return this.arr[0];
+FixedSizeLifo.prototype.maximumPeekFurtherBack = function(): number {
+    return Math.min(this.arr.length, this.max)-1;
+}
+
+FixedSizeLifo.prototype.peekBottom = function(furtherFront: number = 0): any {
+    assert.isTrue(Number.isInteger(furtherFront));
+    return this.arr[0+furtherFront];
 };
 
+FixedSizeLifo.prototype.maximumPeekBottomFurtherFront = function(): number {
+    return FixedSizeLifo.prototype.maximumPeekFurtherBack.call(this);
+}
 
 FixedSizeLifo.prototype.pop = function(): any {
     return this.arr.pop();
