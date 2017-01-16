@@ -22,9 +22,9 @@ plugged to overflow in some other data structure.
     s.numOverflown(); // 0 items have been overflown due to the size limit
 ```
 
-### pop
+### push / pop
 
-**pop** pops out the item from the top of the stack:
+**push** pushes an item into the stack; **pop** pops out the item from the top of the stack:
 ```javascript
     let s = new FixedSizeLifo(2);
     s.size();  // 0
